@@ -1,44 +1,24 @@
 <?php
 
+namespace App\Classes ;
+
 class Users {
-    protected $nom ;
-    protected $email ;
+    protected $username;
+    protected $email; 
     protected $password;
-    protected $role;
 
-    public function getNom(){
-        return $this -> nom;
-    }
-    public function getEmail(){
-        return $this -> email;
-    }
-    public function getPassword(){
-        return $this -> password;
-    }
-    public function getRole(){
-        return $this -> role;
-    }
-
-    public function setNom($nom){
-        $this -> nom = $nom;
-    }
-    public function setEmail($email){
-        $this -> email = $email
-    }
-    public function setPassword($password){
-        $this -> password = $password;
-    }
-    public function setRole($role){
-        $this -> role = $role;
-    }
-
-    
-    public function __construct($nom , $email , $password , $role)
+    public function __construct($username, $email, $password)
     {
-        $this -> nom = $nom;
-        $this -> email = $email;
-        $this -> password = $password;
-        $this -> role = $role;
+        $this->username = $username;
+        $this->email = $email;
+        $this->password = $password;
+    }
+
+    public function emptyInput(){
+        if (empty($this->username) || empty($this->email) || empty($this->password)) {
+            return false;
+        }
+        return true;
     }
 }
 ?>

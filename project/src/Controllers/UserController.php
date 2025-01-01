@@ -1,22 +1,23 @@
 <?php
+namespace App\Controllers ;
+use App\Config\DB ;
 
-namespace App\Controllers\UserController;
+class Signup {
+    protected function checkUser($username, $email) {
+        $db = new DB();
+        $conn = $db->connect();
+        $stmt = $conn->prepare('SELECT id FROM users WHERE name = ? OR email = ?');
 
-use App\Classes\User;
+        if (!$stmt->execute([$username, $email])) {
+            $stmt = null;
+            header("location: ./index.php?error=stmtfailed");
+            exit();
+        }
 
-
-
-require 'vendor/autoload.php';
-
-class UserController
-{
-    public function __construct()
-    {
-        echo 'UserController class loaded';
-    }
-
-    public function create ($usename, $password)
-    {
-        $user = new App\Classes\User();
+        if ($stmt->rowCount() > 0) {
+            return true; // User exists
+        }
+        return false; // User does not exist
     }
 }
+?>
