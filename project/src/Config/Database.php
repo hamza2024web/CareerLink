@@ -1,6 +1,7 @@
 <?php
 namespace App\Config ;
-
+use PDO;
+use PDOException;
 class DB{ 
     private $dbHost     = "mysql"; 
     private $dbUsername = "root"; 
