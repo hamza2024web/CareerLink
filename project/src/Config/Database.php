@@ -2,7 +2,7 @@
 namespace App\Config ;
 use PDO;
 use PDOException;
-class DB{ 
+class Database{ 
     private $dbHost     = "mysql"; 
     private $dbUsername = "root"; 
     private $dbPassword = "root_password"; 

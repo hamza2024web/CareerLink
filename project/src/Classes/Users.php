@@ -1,12 +1,13 @@
 <?php
 
 namespace App\Classes ;
-use App\Controllers\Signup ;
+use App\Controllers\UserController;
+
 
 class Users {
-    protected $username;
-    protected $email; 
-    protected $password;
+    public $username;
+    public $email; 
+    public $password;
 
     public function __construct($username, $email, $password)
     {
@@ -21,7 +22,7 @@ class Users {
             exit();
         }
 
-        $Signin = new Signup();
+        $Signin = new UserController();
         $Signin->setUser($this->username , $this->email , $this->password);
     }
 
