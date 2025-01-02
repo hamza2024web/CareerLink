@@ -12,7 +12,6 @@ class Database{
     public function connect(){ 
             try{ 
                 $this->conn = new PDO("mysql:host=".$this->dbHost.";dbname=".$this->dbName, $this->dbUsername, $this->dbPassword);  
-                echo('connexion succefully');
                 return $this->conn;
             }catch(PDOException $e){ 
                 die("Failed to connect with MySQL: " . $e->getMessage()); 

@@ -1,37 +1,21 @@
 <?php
+namespace App\Classes;
 
-namespace App\Classes ;
-use App\Controllers\UserController;
-
-
-class Users {
-    public $username;
-    public $email; 
+class Users
+{
+    public $email;
     public $password;
+    public $role;
 
-    public function __construct($username, $email, $password)
+    public function __construct($email, $password, $role)
     {
-        $this->username = $username;
         $this->email = $email;
         $this->password = $password;
+        $this->role = $role;
     }
-
-    public function signupUsers(){
-        if($this->emptyInput() == false){
-            header("location: ../index.php?error=emptyinput");
-            exit();
-        }
-
-        $Signin = new UserController();
-        $Signin->setUser($this->username , $this->email , $this->password);
+    
+    public function getRole() {
+        return $this->role;
     }
-
-    public function emptyInput(){
-        if (empty($this->username) || empty($this->email) || empty($this->password)) {
-            return false;
-        }
-        return true;
-    }
-
 }
 ?>
