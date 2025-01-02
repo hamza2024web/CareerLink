@@ -22,24 +22,24 @@ class UserController {
 
     }
 
-    // public function checkUser($username, $email) {
-    //     $db = new Database();
-    //     $conn = $db->connect();
-    //     $stmt = $conn->prepare('SELECT id FROM users WHERE name = ? OR email = ?');
+    public function checkUser($username, $email) {
+        $db = new Database();
+        $conn = $db->connect();
+        $stmt = $conn->prepare('SELECT id FROM users WHERE name = ? OR email = ?');
 
-    //     if (!$stmt->execute(array($username, $email))) {
-    //         $stmt = null;
-    //         header("location: ../index.php?error=stmtfailed");
-    //         exit();
-    //     }
+        if (!$stmt->execute(array($username, $email))) {
+            $stmt = null;
+            header("location: ../index.php?error=stmtfailed");
+            exit();
+        }
 
 
-    //     if ($stmt->rowCount() > 0) {
-    //         $result = false; 
-    //     } else {
-    //         $result = true;
-    //     }
-    //     return $result;
-    // }
+        if ($stmt->rowCount() > 0) {
+            $result = false; 
+        } else {
+            $result = true;
+        }
+        return $result;
+    }
 }
 ?>
