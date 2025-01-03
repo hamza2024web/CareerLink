@@ -10,15 +10,15 @@ class AuthController {
         if($user == null){
             echo "user not found please check ...";
         } else {
-            $baseUrl = "/src/views/";
+            $pathUrl = "/src/views/";
             if($user->getRole()=="administrateur"){
-                header("location:" . $baseUrl . "Admin/dashboard.php");
+                header("location:" . $pathUrl . "Admin/dashboard.php");
             }
             else if($user->getRole()=="candidat"){
-                header("location:". $baseUrl . "users/home.php");
+                header("location:". $pathUrl . "users/home.php");
             }
             else if($user->getRole()=="recruteurs"){
-                header("location:". $baseUrl ."Recruture/home.php");
+                header("location:". $pathUrl ."Recruture/home.php");
             }
         }
     }
