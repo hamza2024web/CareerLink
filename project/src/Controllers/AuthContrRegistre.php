@@ -1,13 +1,13 @@
 <?php
 namespace App\Controllers;
 use App\Models\CandidatAndRecrutureModel;
-
 class AuthContrRegistre{
-    public function Signup($username , $email , $password , $role ,$skils = null ,$diplomat = null ,$companyName = null){
+    public function Signup($username , $email , $password , $role , $companyName = null ,$skils = null ,$diplomat = null ){
         $condidatAndRecruture = new CandidatAndRecrutureModel();
-        $utilisateur = $condidatAndRecruture->setCandidatAndRecture($username, $email, $password, $role, $skills = null, $diplomat = null, $companyName = null);
+        $utilisateur = $condidatAndRecruture->setCandidatAndRecture($username, $email, $password, $role, $skils, $diplomat, $companyName);
+
         if($utilisateur == null){
-                echo "please fields inputs and create your account ...";
+            echo "please fields inputs and create your account ...";
         } else {
             $pathUrl = "/src/views/";
             if($utilisateur->getRole()=="administrateur"){
@@ -22,5 +22,4 @@ class AuthContrRegistre{
         }
     }
 }
-
 ?>

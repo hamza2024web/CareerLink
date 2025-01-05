@@ -1,7 +1,6 @@
 <?php
 require_once("../../../vendor/autoload.php");
 use App\Controllers\AuthContrRegistre;
-
 if(isset($_POST["role"]) && $_POST["role"] === "Candidat"){
     if(isset($_POST["submit"])){
         if(empty($_POST["name"]) || empty($_POST["email"]) || empty($_POST["password"]) || empty($_POST["skils"]) || empty($_POST["diplomat"])){
@@ -13,7 +12,6 @@ if(isset($_POST["role"]) && $_POST["role"] === "Candidat"){
             $role = $_POST["role"];
             $skils = $_POST["skils"];
             $diplomat = $_POST["diplomat"];
-
             $registre = new AuthContrRegistre();
             $registre->Signup($username , $email , $password ,$role ,$skils ,$diplomat);
         }
@@ -28,14 +26,12 @@ if(isset($_POST["role"]) && $_POST["role"] === "Candidat"){
         $password = $_POST["password"];
         $role = $_POST["role"];
         $companyName = $_POST["companyName"];
-
         $registre = new AuthContrRegistre();
         $registre->Signup($username , $email , $password ,$role ,$companyName);
       }
     }
 }
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -60,14 +56,12 @@ if(isset($_POST["role"]) && $_POST["role"] === "Candidat"){
             recruteurFields.style.display = 'block';
         }
     }
-
     // Ensure fields are toggled on page load
     window.onload = function() {
         toggleFields();
     }
   </script>
 </head>
-
 <body>
   <div class="font-[sans-serif]">
     <div class="min-h-screen flex fle-col items-center justify-center py-6 px-4">
@@ -78,7 +72,6 @@ if(isset($_POST["role"]) && $_POST["role"] === "Candidat"){
               <h3 class="text-gray-800 text-3xl font-extrabold">Sign in</h3>
               <p class="text-gray-500 text-sm mt-4 leading-relaxed">Create your account and explore a world of possibilities. Your Career begins here.</p>
             </div>
-
             <div class="form-group">
                 <select name="role" id="role" required onchange="toggleFields()">
                     <option value="">Choisir un rôle</option>
@@ -107,7 +100,6 @@ if(isset($_POST["role"]) && $_POST["role"] === "Candidat"){
                 <input name="password" type="password" required class="w-full text-sm text-gray-800 border border-gray-300 px-4 py-3 rounded-lg outline-blue-600" placeholder="Enter password" />
               </div>
             </div>
-
             <!-- Candidat Specific Fields -->
             <div id="candidatFields" style="display:none;">
                 <div>
@@ -123,7 +115,6 @@ if(isset($_POST["role"]) && $_POST["role"] === "Candidat"){
                     </div>
                 </div>
             </div>
-
             <!-- Recruteur Specific Fields -->
             <div id="recruteurFields" style="display:none;">
                 <div>
@@ -133,7 +124,6 @@ if(isset($_POST["role"]) && $_POST["role"] === "Candidat"){
                     </div>
                 </div>
             </div>
-
             <div class="!mt-8">
               <button type="submit" name="submit" class="w-full shadow-xl py-3 px-4 text-sm tracking-wide rounded-lg text-white bg-blue-600 hover:bg-blue-700 focus:outline-none">
                 Create account
@@ -141,7 +131,6 @@ if(isset($_POST["role"]) && $_POST["role"] === "Candidat"){
             </div>
           </form>
         </div>
-
         <div class="lg:h-[400px] md:h-[300px] max-md:mt-8">
           <img src="https://readymadeui.com/login-image.webp" class="w-full h-full max-md:w-4/5 mx-auto block object-cover" alt="Login or Register" />
         </div>
