@@ -17,6 +17,7 @@
                     <li><a href="./dashboard.php" class="flex items-center hover:bg-blue-500 p-2 rounded"><i class="fas fa-tachometer-alt"></i><span class="ml-2">Tableau de bord</span></a></li>
                     <li><a href="#" class="flex items-center hover:bg-blue-500 p-2 rounded"><i class="fas fa-briefcase"></i><span class="ml-2">Offres par Catégorie</span></a></li>
                     <li><a href="./tag.php" class="flex items-center bg-blue-700 p-2 rounded"><i class="fas fa-tags"></i><span class="ml-2">Tags Utilisés</span></a></li>
+                    <li><a href="" class="flex items-center bg-blue-700 p-2 rounded"><i class="fas fa-tags"></i><span class="ml-2">Tags Utilisés</span></a></li>
                     <li><a href="#" class="flex items-center hover:bg-blue-500 p-2 rounded"><i class="fas fa-chart-line"></i><span class="ml-2">Recruteurs Actifs</span></a></li>
                 </ul>
             </nav>

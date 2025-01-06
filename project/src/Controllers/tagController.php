@@ -31,5 +31,9 @@ class tagController {
         $tagEdit = $tagModelEdit->editTagById($id , $tag_name_edit);
         return $tagEdit;
     }
+    public function deletetag($id) {
+        $tagModelDelete = new tagModel();
+        $result = $tagModelDelete->deleteTagById($id);
+    }
 }
 ?>

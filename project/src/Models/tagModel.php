@@ -48,5 +48,17 @@ class tagModel {
             return new tag($newTag["id"] , $newTag["tag_name"]);
         }
     }
+    public function deleteTagById($id) {
+        $stmt = $this->conn->prepare("DELETE FROM tags WHERE id = :id");
+        $stmt->bindParam(":id", $id, PDO::PARAM_INT);
+        $stmt->execute();
+    
+        if ($stmt->rowCount() > 0) {
+            return true; 
+        } else {
+            return false; 
+        }
+    }
+    
 }
 ?>

@@ -23,7 +23,12 @@ if (isset($_POST["editTag"])) {
     $tagControllerEdit = new tagController();
     $tagControllerEdit->editTag($id, $tag_name_edit);
 }
-if(isset())
+if (isset($_POST["deleteTag"])) {
+    $id = $_POST['id'];
+
+    $tagControllerDelete = new tagController();
+    $tagControllerDelete->deletetag($id);
+}
 $results = $tagControllerFetch->getTag();
 ?>
 
@@ -120,13 +125,14 @@ $results = $tagControllerFetch->getTag();
             document.getElementById('tagInput').value = name;
             document.getElementById('tagIdInput').value = id;
         }
-
         function deleteTag(id) {
             document.getElementById('addTag').name = 'deleteTag';
+            document.getElementById('addTag').innerHTML = 'Delete';
             let name = document.getElementById('tagName' + id).innerHTML;
             document.getElementById('tagInput').value = name;
             document.getElementById('tagIdInput').value = id;
         }
+
     </script>
 </body>
 
