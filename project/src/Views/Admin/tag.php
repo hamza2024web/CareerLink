@@ -8,7 +8,7 @@ $tagControllerFetch = new tagController();
 
 if (isset($_POST["add"])) {
     if (empty($_POST["tag"])) {
-        echo "veuillez saiser le nom de tag";
+        echo "Veuillez saisir le nom de tag";
     } else {
         $tag_name = $_POST["tag"];
 
@@ -23,6 +23,7 @@ if (isset($_POST["editTag"])) {
     $tagControllerEdit = new tagController();
     $tagControllerEdit->editTag($id, $tag_name_edit);
 }
+if(isset())
 $results = $tagControllerFetch->getTag();
 ?>
 
@@ -32,73 +33,101 @@ $results = $tagControllerFetch->getTag();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tags</title>
+    <title>Tags Management</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </head>
 
-<body>
-    <form id="login-form" class="space-y-4" action="" method="POST">
-        <input type="hidden" name="id" id="tagIdInput" value="">
-        <div class="mb-8">
-            <h3 class="text-gray-800 text-3xl font-extrabold">Add a special tag</h3>
-            <p class="text-gray-500 text-sm mt-4 leading-relaxed">Create your account and explore a world of possibilities. Your Career begins here.</p>
-        </div>
+<body class="bg-gray-100">
+    <div class="flex">
+        <!-- Sidebar -->
+        <aside class="bg-blue-600 text-white w-64 min-h-screen p-6">
+            <h1 class="text-2xl font-bold text-center mb-6">CareerLink</h1>
+            <nav>
+                <ul class="space-y-4">
+                    <li><a href="./dashboard.php" class="flex items-center hover:bg-blue-500 p-2 rounded"><i class="fas fa-tachometer-alt"></i><span class="ml-2">Tableau de bord</span></a></li>
+                    <li><a href="#" class="flex items-center hover:bg-blue-500 p-2 rounded"><i class="fas fa-briefcase"></i><span class="ml-2">Offres par Catégorie</span></a></li>
+                    <li><a href="./tag.php" class="flex items-center bg-blue-700 p-2 rounded"><i class="fas fa-tags"></i><span class="ml-2">Tags Utilisés</span></a></li>
+                    <li><a href="#" class="flex items-center hover:bg-blue-500 p-2 rounded"><i class="fas fa-chart-line"></i><span class="ml-2">Recruteurs Actifs</span></a></li>
+                </ul>
+            </nav>
+        </aside>
 
-        <div>
-            <label class="text-gray-800 text-sm mb-2 block">Name</label>
-            <div class="relative flex items-center">
-                <input name="tag" type="text" id="tagInput" required class="w-full text-sm text-gray-800 border border-gray-300 px-4 py-3 rounded-lg outline-blue-600" placeholder="Enter Tag name" />
+        <!-- Main Content -->
+        <div class="flex-1 p-6">
+            <!-- Header -->
+            <header class="mb-8">
+                <h1 class="text-4xl font-bold text-gray-800">Tags Management</h1>
+                <p class="text-gray-600 text-lg mt-2">Gérez vos tags facilement. Ajoutez, modifiez ou supprimez des tags en toute simplicité.</p>
+            </header>
+
+            <!-- Tag Form -->
+            <div class="bg-white shadow-md rounded-lg p-6 mb-10">
+                <h2 class="text-2xl font-bold text-gray-800 mb-4">Ajouter ou Modifier un Tag</h2>
+                <form id="tag-form" class="space-y-6" action="" method="POST">
+                    <input type="hidden" name="id" id="tagIdInput">
+
+                    <div>
+                        <label class="block text-gray-700 text-sm font-semibold mb-2" for="tagInput">Nom du Tag</label>
+                        <input name="tag" type="text" id="tagInput" required class="w-full text-sm text-gray-800 border border-gray-300 px-4 py-3 rounded-lg outline-blue-600 focus:ring-2 focus:ring-blue-400" placeholder="Entrez le nom du tag" />
+                    </div>
+
+                    <div>
+                        <button id="addTag" type="submit" name="add" class="w-full py-3 px-4 text-sm font-semibold tracking-wide rounded-lg text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400 shadow-lg">
+                            Ajouter un Tag
+                        </button>
+                    </div>
+                </form>
             </div>
-        </div>
 
-        <div class="!mt-8">
-            <button id = "addTag" type="submit" name="add" class="w-full shadow-xl py-3 px-4 text-sm tracking-wide rounded-lg text-white bg-blue-600 hover:bg-blue-700 focus:outline-none">
-                Add Tag
-            </button>
-        </div>
-        <div id="player-section">
-            <!-- Your existing player section content remains unchanged -->
-            <h1 class="text-3xl font-bold text-gray-800 mb-6">Player Management</h1>
-            <div class="w-full max-w-6xl bg-white rounded-lg shadow-md overflow-hidden">
-                <table class="table-auto w-full border-collapse">
-                    <thead class="bg-gray-800 text-white">
-                        <tr>
-                            <th class="px-4 py-2">id</th>
-                            <th class="px-4 py-2">name</th>
-                            <th class="px-4 py-2">Actions</th>
+            <!-- Tag Table -->
+            <div class="bg-white shadow-md rounded-lg p-6">
+                <h2 class="text-2xl font-bold text-gray-800 mb-4">Tags Existants</h2>
+                <table class="table-auto w-full border-collapse bg-white">
+                    <thead>
+                        <tr class="bg-gray-800 text-white">
+                            <th class="px-6 py-3 text-left text-sm font-medium">ID</th>
+                            <th class="px-6 py-3 text-left text-sm font-medium">Nom du Tag</th>
+                            <th class="px-6 py-3 text-left text-sm font-medium">Actions</th>
                         </tr>
                     </thead>
                     <tbody class="text-gray-700">
-                        <?php
-                        foreach ($results as $result) {
-                        ?>
-                            <tr class="hover:bg-gray-100 transition">
-                                <td class="border px-4 py-2 text-center"><?= $result['id']; ?></td>
-                                <td class="border px-4 py-2 text-center" id=<?='tagName'. $result['id'] ?>><?= $result['tag_name']; ?></td>
-                                <td class="border px-4 py-2 text-center space-x-2">
-                                    <button onclick="edit(<?= $result['id']; ?>)" type="button"><a class="bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-600 transition">Edit</a></button>
-                                    <button onclick="delete(<?= $result['id']; ?>)"><a href="<? echo $result['id']; ?>" class="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600 transition" onclick="return confirm('Are you sure?');">Delete</a></button>
+                        <?php foreach ($results as $result) { ?>
+                            <tr class="hover:bg-gray-100 border-t border-gray-200">
+                                <td class="px-6 py-4"><?= $result['id']; ?></td>
+                                <td class="px-6 py-4" id="<?= 'tagName' . $result['id'] ?>"><?= $result['tag_name']; ?></td>
+                                <td class="px-6 py-4 space-x-2">
+                                    <button onclick="edit(<?= $result['id']; ?>)" type="button" class="px-3 py-2 text-sm font-semibold text-white bg-yellow-500 rounded-lg hover:bg-yellow-600">
+                                        Modifier
+                                    </button>
+                                    <button onclick="deleteTag(<?= $result['id']; ?>)" class="px-3 py-2 text-sm font-semibold text-white bg-red-500 rounded-lg hover:bg-red-600">
+                                        Supprimer
+                                    </button>
                                 </td>
                             </tr>
-                        <?php
-                        }
-                        ?>
+                        <?php } ?>
                     </tbody>
                 </table>
             </div>
         </div>
+    </div>
 
-    </form>
+    <script>
+        function edit(id) {
+            document.getElementById('addTag').name = 'editTag';
+            document.getElementById('addTag').innerHTML = 'Modifier';
+            let name = document.getElementById('tagName' + id).innerHTML;
+            document.getElementById('tagInput').value = name;
+            document.getElementById('tagIdInput').value = id;
+        }
+
+        function deleteTag(id) {
+            document.getElementById('addTag').name = 'deleteTag';
+            let name = document.getElementById('tagName' + id).innerHTML;
+            document.getElementById('tagInput').value = name;
+            document.getElementById('tagIdInput').value = id;
+        }
+    </script>
 </body>
-<script>
-function edit(id) {
-    document.getElementById('addTag').name = 'editTag';
-    document.getElementById('addTag').innerHTML = 'Update';
-    let name = document.getElementById('tagName' + id).innerHTML;
-    document.getElementById('tagInput').value = name;
-    document.getElementById('tagIdInput').value = id; // Mettre à jour l'ID
-}
-</script>
 
 </html>

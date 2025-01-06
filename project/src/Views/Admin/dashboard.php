@@ -11,13 +11,13 @@
     <div class="flex">
         <!-- Sidebar -->
         <aside class="bg-blue-600 text-white w-64 min-h-screen p-6">
-            <h1 class="text-2xl font-bold text-center">CareerLink</h1>
-            <nav class="mt-6">
-                <ul>
-                    <li class="mt-4"><a href="#" class="flex items-center hover:bg-blue-500 p-2 rounded"><i class="fas fa-tachometer-alt"></i><span class="ml-2">Tableau de bord</span></a></li>
-                    <li class="mt-4"><a href="#" class="flex items-center hover:bg-blue-500 p-2 rounded"><i class="fas fa-briefcase"></i><span class="ml-2">Nombre d'offres d'emploi par catégorie.</span></a></li>
-                    <li class="mt-4"><a href="./tag.php" class="flex items-center hover:bg-blue-500 p-2 rounded"><i class="fas fa-user"></i><span class="ml-2">Tags les plus utilisés.</span></a></li>
-                    <li class="mt-4"><a href="#" class="flex items-center hover:bg-blue-500 p-2 rounded"><i class="fas fa-chart-line"></i><span class="ml-2">Recruteurs les plus actifs .</span></a></li>
+            <h1 class="text-2xl font-bold text-center mb-6">CareerLink</h1>
+            <nav>
+                <ul class="space-y-4">
+                    <li><a href="./dashboard.php" class="flex items-center hover:bg-blue-500 p-2 rounded"><i class="fas fa-tachometer-alt"></i><span class="ml-2">Tableau de bord</span></a></li>
+                    <li><a href="#" class="flex items-center hover:bg-blue-500 p-2 rounded"><i class="fas fa-briefcase"></i><span class="ml-2">Offres par Catégorie</span></a></li>
+                    <li><a href="./tag.php" class="flex items-center bg-blue-700 p-2 rounded"><i class="fas fa-tags"></i><span class="ml-2">Tags Utilisés</span></a></li>
+                    <li><a href="#" class="flex items-center hover:bg-blue-500 p-2 rounded"><i class="fas fa-chart-line"></i><span class="ml-2">Recruteurs Actifs</span></a></li>
                 </ul>
             </nav>
         </aside>
