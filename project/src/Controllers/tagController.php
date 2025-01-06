@@ -26,5 +26,9 @@ class tagController {
             return $tag;
         }
     }
+    public function editTag($id){
+        $tagModelEdit = new tagModel();
+        $tagEdit = $tagModelEdit->editTagById($id);
+    }
 }
 ?>

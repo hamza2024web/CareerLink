@@ -34,6 +34,21 @@ class tagModel {
             } else {
                 return new tag($tagData["id"] , $tagData["tag_name"]);
             }
+    }
+    public function editTagById($id){
+        $query = "SELECT * FROM tags WHERE id = ?";
+        $stmt = $this->conn->prepare($query);
+        $stmt->execute([$id]);
+
+        $stmt = $this->conn->prepare("UPDATE tags set tag_name = ? WHERE id = ?");
+        $stmt->execute();
+        $newTag = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        if(!$newTag){
+            return null;
+        } else {
+            return new tag($newTag["id"] , $newTag["tag_name"]);
         }
+    }
 }
 ?>

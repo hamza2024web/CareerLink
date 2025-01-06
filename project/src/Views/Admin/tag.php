@@ -4,6 +4,12 @@ use App\Controllers\tagController;
 use App\Config\Database;
 
 $tagControllerFetch = new tagController();
+if(isset($_GET['id'])){
+    $id = $_GET['id'];
+
+    $tagControllerEdit = new tagController();
+    $tagControllerEdit->editTag($id);
+}
 if(isset($_POST["submit"])){
     if(empty($_POST["tag"])){
         echo "veuillez saiser le nom de tag";
@@ -67,8 +73,8 @@ $results = $tagControllerFetch->getTag();
                                     <td class="border px-4 py-2 text-center"><?= $result['id']; ?></td>
                                     <td class="border px-4 py-2 text-center"><?= $result['tag_name']; ?></td>
                                     <td class="border px-4 py-2 text-center space-x-2">
-                                        <a href="" class="bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-600 transition">Edit</a>
-                                        <a href="" class="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600 transition" onclick="return confirm('Are you sure?');">Delete</a>
+                                        <a href="<? echo $result['id']; ?>" class="bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-600 transition">Edit</a>
+                                        <a href="<? echo $result['id']; ?>" class="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600 transition" onclick="return confirm('Are you sure?');">Delete</a>
                                     </td>
                                     </tr>
                                     <?php
