@@ -1,35 +1,35 @@
 <?php
 require_once("../../../vendor/autoload.php");
 
-use App\Controllers\tagController;
+use App\Controllers\catcontroller;
 use App\Config\Database;
 
-$tagControllerFetch = new tagController();
+$catControllerFetch = new catcontroller();
 
 if (isset($_POST["add"])) {
-    if (empty($_POST["tag"])) {
-        echo "Veuillez saisir le nom de tag";
+    if (empty($_POST["cat"])) {
+        echo "veuilleez saiser le nom de categorie";
     } else {
-        $tag_name = $_POST["tag"];
+        $category_name = $_POST["cat"];
 
-        $tagController = new tagController();
-        $tagController->setTag($tag_name);
+        $catController = new catcontroller();
+        $catController->setCat($category_name);
     }
 }
-if (isset($_POST["editTag"])) {
+if (isset($_POST["editCat"])) {
     $id = $_POST['id'];
-    $tag_name_edit = $_POST['tag'];
+    $cat_name_edit = $_POST['cat'];
 
-    $tagControllerEdit = new tagController();
-    $tagControllerEdit->editTag($id, $tag_name_edit);
+    $tagControllerEdit = new catcontroller();
+    $tagControllerEdit->editCat($id, $cat_name_edit);
 }
-if (isset($_POST["deleteTag"])) {
+if (isset($_POST["deleteCate"])) {
     $id = $_POST['id'];
 
-    $tagControllerDelete = new tagController();
-    $tagControllerDelete->deletetag($id);
+    $catControllerDelete = new catcontroller();
+    $catControllerDelete->deleteCat($id);
 }
-$results = $tagControllerFetch->getTag();
+$results = $catControllerFetch->getCat();
 ?>
 
 <!DOCTYPE html>
@@ -69,18 +69,18 @@ $results = $tagControllerFetch->getTag();
 
             <!-- Tag Form -->
             <div class="bg-white shadow-md rounded-lg p-6 mb-10">
-                <h2 class="text-2xl font-bold text-gray-800 mb-4">Ajouter ou Modifier un Tag</h2>
+                <h2 class="text-2xl font-bold text-gray-800 mb-4">Ajouter ou Modifier un Categorie</h2>
                 <form id="tag-form" class="space-y-6" action="" method="POST">
-                    <input type="hidden" name="id" id="tagIdInput">
+                    <input type="hidden" name="id" id="catIdInput">
 
                     <div>
-                        <label class="block text-gray-700 text-sm font-semibold mb-2" for="tagInput">Nom du Tag</label>
-                        <input name="tag" type="text" id="tagInput" required class="w-full text-sm text-gray-800 border border-gray-300 px-4 py-3 rounded-lg outline-blue-600 focus:ring-2 focus:ring-blue-400" placeholder="Entrez le nom du tag" />
+                        <label class="block text-gray-700 text-sm font-semibold mb-2" for="tagInput">Nom du categorie</label>
+                        <input name="cat" type="text" id="catInput" required class="w-full text-sm text-gray-800 border border-gray-300 px-4 py-3 rounded-lg outline-blue-600 focus:ring-2 focus:ring-blue-400" placeholder="Entrez le nom du tag" />
                     </div>
 
                     <div>
-                        <button id="addTag" type="submit" name="add" class="w-full py-3 px-4 text-sm font-semibold tracking-wide rounded-lg text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400 shadow-lg">
-                            Ajouter un Tag
+                        <button id="addCat" type="submit" name="add" class="w-full py-3 px-4 text-sm font-semibold tracking-wide rounded-lg text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400 shadow-lg">
+                            Ajouter un categorie
                         </button>
                     </div>
                 </form>
@@ -101,12 +101,12 @@ $results = $tagControllerFetch->getTag();
                         <?php foreach ($results as $result) { ?>
                             <tr class="hover:bg-gray-100 border-t border-gray-200">
                                 <td class="px-6 py-4"><?= $result['id']; ?></td>
-                                <td class="px-6 py-4" id="<?= 'tagName' . $result['id'] ?>"><?= $result['tag_name']; ?></td>
+                                <td class="px-6 py-4" id="<?= 'catName' . $result['id'] ?>"><?= $result['category_name']; ?></td>
                                 <td class="px-6 py-4 space-x-2">
                                     <button onclick="edit(<?= $result['id']; ?>)" type="button" class="px-3 py-2 text-sm font-semibold text-white bg-yellow-500 rounded-lg hover:bg-yellow-600">
                                         Modifier
                                     </button>
-                                    <button onclick="deleteTag(<?= $result['id']; ?>)" class="px-3 py-2 text-sm font-semibold text-white bg-red-500 rounded-lg hover:bg-red-600">
+                                    <button onclick="deleteCat(<?= $result['id']; ?>)" class="px-3 py-2 text-sm font-semibold text-white bg-red-500 rounded-lg hover:bg-red-600">
                                         Supprimer
                                     </button>
                                 </td>
@@ -120,20 +120,20 @@ $results = $tagControllerFetch->getTag();
 
     <script>
         function edit(id) {
-            document.getElementById('addTag').name = 'editTag';
-            document.getElementById('addTag').innerHTML = 'Modifier';
-            let name = document.getElementById('tagName' + id).innerHTML;
-            document.getElementById('tagInput').value = name;
-            document.getElementById('tagIdInput').value = id;
-        }
-        function deleteTag(id) {
-            document.getElementById('addTag').name = 'deleteTag';
-            document.getElementById('addTag').innerHTML = 'Delete';
-            let name = document.getElementById('tagName' + id).innerHTML;
-            document.getElementById('tagInput').value = name;
-            document.getElementById('tagIdInput').value = id;
+            document.getElementById('addCat').name = 'editCat';
+            document.getElementById('addCat').innerHTML = 'Modifier';
+            let name = document.getElementById('catName' + id).innerHTML;
+            document.getElementById('catInput').value = name;
+            document.getElementById('catIdInput').value = id;
         }
 
+        function deleteCat(id) {
+            document.getElementById('addCat').name = 'deleteCate';
+            document.getElementById('addCat').innerHTML = 'Delete';
+            let name = document.getElementById('catName' + id).innerHTML;
+            document.getElementById('catInput').value = name;
+            document.getElementById('catIdInput').value = id;
+        }
     </script>
 </body>
 
