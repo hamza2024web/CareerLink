@@ -26,9 +26,15 @@ class tagController {
             return $tag;
         }
     }
-    public function editTag($id){
+    public function editTag($id , $tag_name_edit){
         $tagModelEdit = new tagModel();
-        $tagEdit = $tagModelEdit->editTagById($id);
+        $tagEdit = $tagModelEdit->editTagById($id , $tag_name_edit);
+
+        if($tagEdit == null){
+            echo "please verify your input ...";
+        } else {
+            return $tagEdit;
+        }
     }
 }
 ?>

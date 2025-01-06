@@ -35,12 +35,10 @@ class tagModel {
                 return new tag($tagData["id"] , $tagData["tag_name"]);
             }
     }
-    public function editTagById($id){
-        $query = "SELECT * FROM tags WHERE id = ?";
-        $stmt = $this->conn->prepare($query);
-        $stmt->execute([$id]);
-
-        $stmt = $this->conn->prepare("UPDATE tags set tag_name = ? WHERE id = ?");
+    public function editTagById($id , $tag_name_edit){
+        $stmt = $this->conn->prepare("UPDATE tags set tag_name = :tag_name_edit WHERE id = :id");
+        $stmt->bindParam(":tag_name_edit" , $tag_name_edit);
+        $stmt->bindParam(":id" , $id);
         $stmt->execute();
         $newTag = $stmt->fetch(PDO::FETCH_ASSOC);
 
