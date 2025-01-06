@@ -15,11 +15,9 @@
             <nav class="mt-6">
                 <ul>
                     <li class="mt-4"><a href="#" class="flex items-center hover:bg-blue-500 p-2 rounded"><i class="fas fa-tachometer-alt"></i><span class="ml-2">Tableau de bord</span></a></li>
-                    <li class="mt-4"><a href="#" class="flex items-center hover:bg-blue-500 p-2 rounded"><i class="fas fa-briefcase"></i><span class="ml-2">Offres d'emploi</span></a></li>
-                    <li class="mt-4"><a href="#" class="flex items-center hover:bg-blue-500 p-2 rounded"><i class="fas fa-user"></i><span class="ml-2">Candidatures</span></a></li>
-                    <li class="mt-4"><a href="#" class="flex items-center hover:bg-blue-500 p-2 rounded"><i class="fas fa-chart-line"></i><span class="ml-2">Statistiques</span></a></li>
-                    <li class="mt-4"><a href="#" class="flex items-center hover:bg-blue-500 p-2 rounded"><i class="fas fa-cog"></i><span class="ml-2">Paramètres</span></a></li>
-                    <li class="mt-4"><a href="#" class="flex items-center hover:bg-blue-500 p-2 rounded"><i class="fas fa-sign-out-alt"></i><span class="ml-2">Déconnexion</span></a></li>
+                    <li class="mt-4"><a href="#" class="flex items-center hover:bg-blue-500 p-2 rounded"><i class="fas fa-briefcase"></i><span class="ml-2">Nombre d'offres d'emploi par catégorie.</span></a></li>
+                    <li class="mt-4"><a href="./tag.php" class="flex items-center hover:bg-blue-500 p-2 rounded"><i class="fas fa-user"></i><span class="ml-2">Tags les plus utilisés.</span></a></li>
+                    <li class="mt-4"><a href="#" class="flex items-center hover:bg-blue-500 p-2 rounded"><i class="fas fa-chart-line"></i><span class="ml-2">Recruteurs les plus actifs .</span></a></li>
                 </ul>
             </nav>
         </aside>
@@ -44,13 +42,6 @@
                     <p class="text-2xl mt-2">15</p>
                 </div>
             </div>
-
-            <section class="mt-8">
-                <h2 class="text-2xl font-semibold mb-4">Graphiques des Candidatures</h2>
-                <div class="bg-white shadow-lg rounded-lg p-4">
-                    <canvas id="candidaturesChart" width="400" height="200"></canvas>
-                </div>
-            </section>
         </main>
     </div>
 

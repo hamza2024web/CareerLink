@@ -3,9 +3,9 @@ namespace App\Classes;
 
 class Users
 {
-    public $email;
-    public $password;
-    public $role;
+    private $email;
+    private $password;
+    private $role;
 
     public function __construct($email, $password, $role)
     {

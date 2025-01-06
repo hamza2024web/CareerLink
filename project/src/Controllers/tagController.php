@@ -1,0 +1,30 @@
+<?php
+namespace App\Controllers;
+use App\Models\tagModel;
+
+class tagController {
+    public function getTag(){
+        $tagModelFetch = new tagModel();
+        $tagFetch = $tagModelFetch->getAllTags();
+        return $tagFetch;
+
+        if($tagFetch == null){
+            echo "please check your code fetch ...";
+        } else {
+            $pathUrl = "/src/views";
+            header("location:" .$pathUrl . "Admin/tag.php");
+        }
+        
+    }
+    public function setTag($tag_name){
+        $tagModel = new tagModel();
+        $tag = $tagModel->setTagName($tag_name);
+
+        if($tag == null){
+            echo "please verifiy your input ...";
+        } else {
+            return $tag;
+        }
+    }
+}
+?>
