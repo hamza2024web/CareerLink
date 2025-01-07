@@ -24,59 +24,47 @@
             </div>
             <div class="form-group">
                 <select name="categorie" id="categorie" required>
-                    <option value="">Tag</option>
+                    <option value="">Categorie</option>
                     <option value="Candidat">Candidat</option>
                 </select>
             </div>
         </div>
 
         <div>
-            <label class="text-gray-800 text-sm mb-2 block">Name</label>
+            <label class="text-gray-800 text-sm mb-2 block">Post</label>
             <div class="relative flex items-center">
-                <input name="name" type="text" required class="w-full text-sm text-gray-800 border border-gray-300 px-4 py-3 rounded-lg outline-blue-600" placeholder="Enter username" />
+                <input name="post" type="text" required class="w-full text-sm text-gray-800 border border-gray-300 px-4 py-3 rounded-lg outline-blue-600" placeholder="Enter post" />
             </div>
         </div>
 
         <div>
-            <label class="text-gray-800 text-sm mb-2 block">Email</label>
+            <label class="text-gray-800 text-sm mb-2 block">Salaire</label>
             <div class="relative flex items-center">
-                <input name="email" type="email" required class="w-full text-sm text-gray-800 border border-gray-300 px-4 py-3 rounded-lg outline-blue-600" placeholder="Enter email" />
+                <input name="salaire" type="number" required class="w-full text-sm text-gray-800 border border-gray-300 px-4 py-3 rounded-lg outline-blue-600" placeholder="Enter email" />
             </div>
         </div>
 
         <div>
-            <label class="text-gray-800 text-sm mb-2 block">Password</label>
+            <label class="text-gray-800 text-sm mb-2 block">Qualification</label>
             <div class="relative flex items-center">
-                <input name="password" type="password" required class="w-full text-sm text-gray-800 border border-gray-300 px-4 py-3 rounded-lg outline-blue-600" placeholder="Enter password" />
+                <input name="qualification" type="text" required class="w-full text-sm text-gray-800 border border-gray-300 px-4 py-3 rounded-lg outline-blue-600" placeholder="Enter password" />
             </div>
         </div>
-        <!-- Candidat Specific Fields -->
-        <div id="candidatFields" style="display:none;">
             <div>
-                <label class="text-gray-800 text-sm mb-2 block">Skills</label>
+                <label class="text-gray-800 text-sm mb-2 block">Lieu</label>
                 <div class="relative flex items-center">
-                    <input name="skils" type="text" class="w-full text-sm text-gray-800 border border-gray-300 px-4 py-3 rounded-lg outline-blue-600" placeholder="Enter skills" />
+                    <input name="lieu" type="text" class="w-full text-sm text-gray-800 border border-gray-300 px-4 py-3 rounded-lg outline-blue-600" placeholder="Enter skills" />
                 </div>
             </div>
             <div>
-                <label class="text-gray-800 text-sm mb-2 block">Diplomat</label>
+                <label class="text-gray-800 text-sm mb-2 block">Discription</label>
                 <div class="relative flex items-center">
-                    <input name="diplomat" type="text" class="w-full text-sm text-gray-800 border border-gray-300 px-4 py-3 rounded-lg outline-blue-600" placeholder="Enter diploma" />
+                    <input name="discription" type="text" class="w-full text-sm text-gray-800 border border-gray-300 px-4 py-3 rounded-lg outline-blue-600" placeholder="Enter diploma" />
                 </div>
             </div>
-        </div>
-        <!-- Recruteur Specific Fields -->
-        <div id="recruteurFields" style="display:none;">
-            <div>
-                <label class="text-gray-800 text-sm mb-2 block">Company Name</label>
-                <div class="relative flex items-center">
-                    <input name="companyName" type="text" class="w-full text-sm text-gray-800 border border-gray-300 px-4 py-3 rounded-lg outline-blue-600" placeholder="Enter company name" />
-                </div>
-            </div>
-        </div>
         <div class="!mt-8">
             <button type="submit" name="submit" class="w-full shadow-xl py-3 px-4 text-sm tracking-wide rounded-lg text-white bg-blue-600 hover:bg-blue-700 focus:outline-none">
-                Create account
+                Add offre
             </button>
         </div>
     </form>
