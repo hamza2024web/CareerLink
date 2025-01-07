@@ -16,7 +16,7 @@ if(isset($_POST["role"]) && $_POST["role"] === "Candidat"){
             $registre->Signup($username , $email , $password ,$role ,$skils ,$diplomat);
         }
     }
-} else if(isset($_POST["role"]) && $_POST["role"] === "Recruteur"){
+} else if(isset($_POST["role"]) && $_POST["role"] === "recruteurs"){
     if(isset($_POST["submit"])){
       if(empty($_POST["name"]) || empty($_POST["email"]) || empty($_POST["password"]) || empty($_POST["companyName"])){
         echo "Check your inputs name ...";
@@ -52,7 +52,7 @@ if(isset($_POST["role"]) && $_POST["role"] === "Candidat"){
         // Show fields based on selected role
         if (role === 'Candidat') {
             candidatFields.style.display = 'block';
-        } else if (role === 'Recruteur') {
+        } else if (role === 'recruteurs') {
             recruteurFields.style.display = 'block';
         }
     }
@@ -76,12 +76,12 @@ if(isset($_POST["role"]) && $_POST["role"] === "Candidat"){
                 <select name="role" id="role" required onchange="toggleFields()">
                     <option value="">Choisir un rôle</option>
                     <option value="Candidat">Candidat</option>
-                    <option value="Recruteur">Recruteur</option>
+                    <option value="recruteurs">recruteurs</option>
                 </select>
             </div>
             
             <div>
-              <label class="text-gray-800 text-sm mb-2 block">Name</label>
+              <label class="text-gray-800 text-sm mb-2 block" >Name</label>
               <div class="relative flex items-center">
                 <input name="name" type="text" required class="w-full text-sm text-gray-800 border border-gray-300 px-4 py-3 rounded-lg outline-blue-600" placeholder="Enter username" />
               </div>

@@ -22,7 +22,7 @@ class CandidatAndRecrutureModel
             $userId = $this->conn->lastInsertId();
             if ($role === 'Candidat') {
                 $this->addCandidat($userId, ['skills' => $skils, 'deplome' => $diplomat]);
-            } elseif ($role === 'Recruteur') {
+            } elseif ($role === 'recruteurs') {
                 $this->addRecruteur($userId, ['company_name' => $companyName]);
             }
             $stmt = $this->conn->prepare("SELECT * FROM users WHERE id = ?");

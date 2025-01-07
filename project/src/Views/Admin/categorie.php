@@ -63,7 +63,7 @@ $results = $catControllerFetch->getCat();
         <div class="flex-1 p-6">
             <!-- Header -->
             <header class="mb-8">
-                <h1 class="text-4xl font-bold text-gray-800">Tags Management</h1>
+                <h1 class="text-4xl font-bold text-gray-800">Categorie Management</h1>
                 <p class="text-gray-600 text-lg mt-2">Gérez vos tags facilement. Ajoutez, modifiez ou supprimez des tags en toute simplicité.</p>
             </header>
 

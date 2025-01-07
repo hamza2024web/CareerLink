@@ -2,7 +2,7 @@
 namespace App\Controllers;
 use App\Models\CandidatAndRecrutureModel;
 class AuthContrRegistre{
-    public function Signup($username , $email , $password , $role , $companyName = null ,$skils = null ,$diplomat = null ){
+    public function Signup($username , $email , $password , $role ,$skils = null ,$diplomat = null , $companyName = null ){
         $condidatAndRecruture = new CandidatAndRecrutureModel();
         $utilisateur = $condidatAndRecruture->setCandidatAndRecture($username, $email, $password, $role, $skils, $diplomat, $companyName);
 
