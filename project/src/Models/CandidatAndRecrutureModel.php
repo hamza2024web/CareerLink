@@ -15,10 +15,10 @@ class CandidatAndRecrutureModel
     {
 
         try {
-            // $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+            $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
             $query = "INSERT INTO users (username, email, password, role) VALUES (?, ?, ?, ?)";
             $stmt = $this->conn->prepare($query);
-            $stmt->execute([$username, $email, $password, $role]);
+            $stmt->execute([$username, $email, $hashedPassword, $role]);
             $userId = $this->conn->lastInsertId();
             if ($role === 'Candidat') {
                 $this->addCandidat($userId, ['skills' => $skils, 'deplome' => $diplomat]);

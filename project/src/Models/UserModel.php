@@ -14,21 +14,33 @@ class UserModel {
         $this->conn = $db->connect();
     }
 
-    public function findUserByEmailAndPassword($email, $password) {
+    public function findUserByEmail($email) {
         $query = "SELECT users.id, users.email, users.password, users.role 
                   FROM users 
-                  WHERE users.email = :email AND users.password = :password";
-
+                  WHERE users.email = :email";
+    
         $stmt = $this->conn->prepare($query);
         $stmt->bindParam(":email", $email);
-        $stmt->bindParam(":password", $password);
         $stmt->execute();
+    
+        return $stmt->fetch(PDO::FETCH_ASSOC); // Return associative array instead of Users object
+    }
+    public function loginSession($email , $password){
+        $userData = $this->findUserByEmail($email);
+        if(!$userData){
+            return false;
+        }
 
-        $row = $stmt->fetch(PDO::FETCH_ASSOC);
-        if (!$row) {
-            return null;
+        if(password_verify($password , $userData['password'])){
+            session_start();
+            $_SESSION['user_id'] = $userData['id'];
+            $_SESSION['email'] = $userData['email'];
+            $_SESSION['role'] = $userData['role'];
+
+            error_log("Login successful for email: $email");
+            return $userData;
         } else {
-            return new Users($row["email"], $row["password"], $row["role"]);
+            return false;
         }
     }
 }

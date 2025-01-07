@@ -9,7 +9,7 @@
 </head>
 <body class="bg-gray-100 font-sans">
     <header class="bg-blue-600 text-white p-6">
-        <h1 class="text-4xl font-bold text-center">CreeLink - Recruteurs</h1>
+        <h1 class="text-4xl font-bold text-center">CreeLink - Candidat</h1>
         <p class="text-center mt-2">Trouvez les talents qui feront la différence dans votre entreprise.</p>
         <nav class="mt-4">
             <ul class="flex justify-center space-x-4">
