@@ -23,12 +23,16 @@ class UserModel {
         $stmt->bindParam(":email", $email);
         $stmt->execute();
     
-        return $stmt->fetch(PDO::FETCH_ASSOC); // Return associative array instead of Users object
+        return $stmt->fetch(PDO::FETCH_ASSOC);
     }
     public function loginSession($email , $password){
         $userData = $this->findUserByEmail($email);
         if(!$userData){
             return false;
+        }
+
+        if ($userData['role'] === 'administrateur'){
+            return $userData;
         }
 
         if(password_verify($password , $userData['password'])){
