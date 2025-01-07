@@ -25,7 +25,7 @@
 
         <!-- Main Content -->
         <main class="flex-1 p-6">
-            <h2 class="text-3xl font-semibold mb-6">Bienvenue sur votre tableau de bord, [Nom de l'utilisateur]</h2>
+            <h2 class="text-3xl font-semibold mb-6">Bienvenue sur votre tableau de Bord</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 <!-- Card 1 -->
                 <div class="bg-white shadow-lg rounded-lg p-4">

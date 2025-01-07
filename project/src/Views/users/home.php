@@ -1,3 +1,8 @@
+<?php
+session_start();
+$email = $_SESSION['email'];
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -22,7 +27,7 @@
     </header>
 
     <main class="container mx-auto mt-8 p-4">
-        <h2 class="text-3xl font-semibold mb-6 text-center">Bienvenue, Recruteurs !</h2>
+        <h2 class="text-3xl font-semibold mb-6 text-center">Bienvenue, le candidat <?= $email ?></h2>
         <p class="text-center text-lg">Connectez-vous avec des candidats talentueux et passionnés.</p>
         <p class="mt-4 text-center">Utilisez notre plateforme pour publier vos offres d'emploi et gérer les candidatures facilement.</p>
 
