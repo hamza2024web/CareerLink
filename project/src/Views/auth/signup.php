@@ -27,7 +27,7 @@ if(isset($_POST["role"]) && $_POST["role"] === "Candidat"){
         $role = $_POST["role"];
         $companyName = $_POST["companyName"];
         $registre = new AuthContrRegistre();
-        $registre->Signup($username , $email , $password ,$role ,$companyName);
+        $registre->Signup($username , $email , $password ,$role ,$skils = "",$diplomat = "",$companyName);
       }
     }
 }

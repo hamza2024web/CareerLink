@@ -14,8 +14,7 @@
         <nav class="mt-4">
             <ul class="flex justify-center space-x-4">
                 <li><a href="#" class="hover:underline">Accueil</a></li>
-                <li><a href="#" class="hover:underline">Offres d'emploi</a></li>
-                <li><a href="#" class="hover:underline">Témoignages</a></li>
+                <li><a href="./offre.php" class="hover:underline">Offres d'emploi</a></li>
                 <li><a href="#" class="hover:underline">Contact</a></li>
             </ul>
         </nav>
