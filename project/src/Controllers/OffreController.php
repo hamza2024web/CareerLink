@@ -5,8 +5,9 @@ use App\Classes\Offre;
 use App\Models\AddOffreModel;
 
 class OffreController {
-    public function AddOffre($post , $salary , $qualification , $location , $description ,$recruteur_id , $category , $tagOffre){
-        $offer = new Offre($post , $description ,$salary, $qualification , $location , $recruteur_id ,$category, $tagOffre);
+    public function AddOffre($post , $salary , $qualification , $location , $description ,$recruteur_id , $category ,$tagOffre){
+        $offer = new Offre($post , $salary , $qualification , $location , $description ,$recruteur_id , $category ,$tagOffre);
+
         $AddOffreRecruture = new AddOffreModel();
         $offre = $AddOffreRecruture->addOffreRecrutureDb($offer);
         if(!$offre){
@@ -16,6 +17,11 @@ class OffreController {
             header("location:" .$pathUrl. "Recruture/home.php");
             exit();            
         }
+    }
+    public function fetchOffre(){
+        $offreFetchModel = new  AddOffreModel();
+        $offreFetch = $offreFetchModel->getOffers();
+        return $offreFetch;
     }
 }
 ?>

@@ -11,14 +11,13 @@ class Offre {
     private $category_id;
     private $tag;
 
-
-    public function __construct($post , $description ,$salary ,$qualification ,$location ,$recruteur_id ,$category_id ,$tag)
+    public function __construct($post ,$salary  ,$qualification ,$location , $description ,$recruteur_id ,$category_id ,$tag)
     {
         $this->post=$post;
-        $this->description=$description;
         $this->salary=$salary;
         $this->qualification=$qualification;
         $this->location=$location;
+        $this->description=$description;
         $this->recruteur_id=$recruteur_id;
         $this->category_id=$category_id;
         $this->tag=$tag;

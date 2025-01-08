@@ -26,7 +26,7 @@ if(isset($_POST['add'])){
         $location = $_POST["lieu"];
         $description = $_POST["discription"];
         $addOffre = new OffreController();
-        $addOffre->addoffre($post , $salary , $qualification , $location , $description ,$recruteur_id, $tagOffre , $category);
+        $addOffre->addoffre($post , $salary , $qualification , $location , $description ,$recruteur_id , $category ,$tagOffre);
     }
 }
 
