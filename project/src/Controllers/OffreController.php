@@ -5,10 +5,10 @@ use App\Classes\Offre;
 use App\Models\AddOffreModel;
 
 class OffreController {
-    public function AddOffre($post , $salary , $qualification , $location , $description ,$recruteur_id, $tagOffre , $catOffre){
-        $AddOffreRecruture = new AddOffreModel();
-        $offer = new Offre($post , $description ,$salary, $qualification , $location , $recruteur_id ,$catOffre, $tagOffre);
+    public function AddOffre($post , $salary , $qualification , $location , $description ,$recruteur_id , $catOffre , $tagOffre){
 
+        $offer = new Offre($post , $description ,$salary, $qualification , $location , $recruteur_id ,$catOffre, $tagOffre);
+        $AddOffreRecruture = new AddOffreModel();
         $offre = $AddOffreRecruture->addOffreRecrutureDb($offer);
         return $offre;
         

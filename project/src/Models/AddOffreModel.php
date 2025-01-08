@@ -15,19 +15,27 @@ class AddOffreModel {
             $query = "INSERT INTO offres (post , description , salary , qualification ,location,recruteur_id, category_id) 
             VALUES :post , :description , :salary , :qualification , :location , :recruteur_id  , :catOffre";
             $stmt = $this->conn->prepare($query);
+
+            $post = $offer->getPost();
+            $description = $offer->getDesc();
+            $salary = $offer->getSalary();
+            $qualification = $offer->getQual();
+            $location = $offer->getLocation();
+            $recruture = $offer->getRecr();
+            $category = $offer->getCat();
             $stmt->bindParam(":post",$post);
             $stmt->bindParam(":description",$description);
             $stmt->bindParam(":salary",$salary);
             $stmt->bindParam(":qualification",$qualification);
             $stmt->bindParam(":location",$location);
-            $stmt->bindParam(":recruteur_id",$recruteur_id);
-            $stmt->bindParam(":category_id",$catOffre);
-            $stmt->execute([$post , $description ,$salary ,$qualification ,$location ,$recruteur_id]);
+            $stmt->bindParam(":recruteur_id",$recruture);
+            $stmt->bindParam(":category_id",$category);
+            $stmt->execute();
             $offreId = $this->conn->lastInsertId();
             $this->addOffreId($offreId);
-            $this->addOffreTag($tagOffre);
+            $this->addOffreTag($offer->getTag());
             $offreData = $stmt->fetch(PDO::FETCH_ASSOC);
-            return new Offre($offreData['post'] , $offreData['description'],$offreData['salary'] ,$offreData['qualification'] ,$offreData['location'] ,$offreData['recruteur_id'],$offreData['catOffre']);
+            return new Offre($offreData['post'],$offreData['description'],$offreData['salary'],$offreData['qualification'],$offreData['location'],$offreData['recruteur'],$offreData['category_id'],$offreData['tag']);
         } catch (\PDOException $e) {
             error_log("Database error: " . $e->getMessage());
             return null;

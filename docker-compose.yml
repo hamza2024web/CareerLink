@@ -31,7 +31,7 @@ services:
     container_name: php_career
     restart: always
     volumes:
-      - ./src:/var/www/html
+      - ./project:/var/www/html
     ports:
       - "83:80"
 

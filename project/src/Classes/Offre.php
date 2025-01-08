@@ -30,7 +30,7 @@ class Offre {
     public function getDesc(){
         return $this->description;
     }
-    public function getsalary(){
+    public function getSalary(){
         return $this->salary;
     }
     public function getQual(){
