@@ -19,14 +19,14 @@ if(isset($_POST['add'])){
     } else {
         $recruteur_id = $_SESSION['user_id'];
         $tagOffre = $_POST["tag"];
-        $catOffre = $_POST["categorie"];
+        $category = $_POST["categorie"];
         $post = $_POST["post"];
         $salary = $_POST["salaire"];
         $qualification = $_POST["qualification"];
         $location = $_POST["lieu"];
         $description = $_POST["discription"];
         $addOffre = new OffreController();
-        $addOffre->addoffre($post , $salary , $qualification , $location , $description ,$recruteur_id, $tagOffre , $catOffre);
+        $addOffre->addoffre($post , $salary , $qualification , $location , $description ,$recruteur_id, $tagOffre , $category);
     }
 }
 
