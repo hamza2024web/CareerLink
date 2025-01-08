@@ -132,6 +132,8 @@ $results = $tagControllerFetch->getTag();
             let name = document.getElementById('tagName' + id).innerHTML;
             document.getElementById('tagInput').value = name;
             document.getElementById('tagIdInput').value = id;
+
+            return confirm('Are you sure?');
         }
 
     </script>

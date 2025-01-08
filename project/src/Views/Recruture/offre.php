@@ -1,9 +1,10 @@
 <?php
-
+session_start();
 require_once("../../../vendor/autoload.php");
 
 use App\Controllers\tagController;
 use App\Controllers\catcontroller;
+use App\Controllers\OffreController;
 
 $tagControllerFetch = new tagController();
 $resultsTag = $tagControllerFetch->getTag();
@@ -16,16 +17,16 @@ if(isset($_POST['add'])){
     || empty($_POST['tag']) || empty($_POST['categorie'])){
     echo "veuillez saiser les inputs correctement ...";
     } else {
-        
+        $recruteur_id = $_SESSION['user_id'];
         $tagOffre = $_POST["tag"];
         $catOffre = $_POST["categorie"];
         $post = $_POST["post"];
-        $salaire = $_POST["salaire"];
+        $salary = $_POST["salaire"];
         $qualification = $_POST["qualification"];
-        $lieu = $_POST["lieu"];
-        $discription = $_POST["discription"];
+        $location = $_POST["lieu"];
+        $description = $_POST["discription"];
         $addOffre = new OffreController();
-        $addOffre->addoffre($post , $salaire , $qualification , $lieu , $discription , $tagOffre , $catOffre);
+        $addOffre->addoffre($post , $salary , $qualification , $location , $description ,$recruteur_id, $tagOffre , $catOffre);
     }
 }
 
@@ -50,7 +51,7 @@ if(isset($_POST['add'])){
             </div>
 
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                <!-- Tag Dropdown -->
+
                 <div>
                     <label for="tag" class="block text-gray-700 font-medium mb-2">Tags</label>
                     <select name="tag" id="tag" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500">
@@ -63,7 +64,6 @@ if(isset($_POST['add'])){
                     </select>
                 </div>
 
-                <!-- Category Dropdown -->
                 <div>
                     <label for="categorie" class="block text-gray-700 font-medium mb-2">Categories</label>
                     <select name="categorie" id="categorie" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500">
@@ -77,37 +77,31 @@ if(isset($_POST['add'])){
                 </div>
             </div>
 
-            <!-- Post Input -->
             <div>
                 <label for="post" class="block text-gray-700 font-medium mb-2">Post</label>
                 <input name="post" id="post" type="text" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500" placeholder="Enter post title">
             </div>
 
-            <!-- Salaire Input -->
             <div>
                 <label for="salaire" class="block text-gray-700 font-medium mb-2">Salaire</label>
                 <input name="salaire" id="salaire" type="number" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500" placeholder="Enter salary">
             </div>
 
-            <!-- Qualification Input -->
             <div>
                 <label for="qualification" class="block text-gray-700 font-medium mb-2">Qualification</label>
                 <input name="qualification" id="qualification" type="text" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500" placeholder="Enter qualification">
             </div>
 
-            <!-- Lieu Input -->
             <div>
                 <label for="lieu" class="block text-gray-700 font-medium mb-2">Lieu</label>
                 <input name="lieu" id="lieu" type="text" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500" placeholder="Enter location">
             </div>
 
-            <!-- Description Input -->
             <div>
                 <label for="discription" class="block text-gray-700 font-medium mb-2">Description</label>
                 <textarea name="discription" id="discription" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500" placeholder="Enter description"></textarea>
             </div>
 
-            <!-- Submit Button -->
             <div class="mt-6">
                 <button type="submit" name="add" class="w-full py-3 px-6 text-white bg-blue-600 hover:bg-blue-700 rounded-lg shadow-md focus:ring-2 focus:ring-blue-500 focus:outline-none">
                     Add Offre
