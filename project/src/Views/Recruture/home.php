@@ -1,8 +1,11 @@
 <?php
+require_once("../../../vendor/autoload.php");
 session_start();
 $email = $_SESSION['email'];
 
-
+use App\Controllers\OffreController;
+$offresFetch = new OffreController;
+$offreFetched = $offresFetch->fetchOffre();
 
 ?>
 
@@ -38,33 +41,21 @@ $email = $_SESSION['email'];
         </div>
 
         <section class="mt-12">
-            <h2 class="text-2xl font-semibold mb-6 text-center">Offres d'Emploi Récentes</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <?php foreach ($offreFetched as $offre) { ?>
+                <h2 class="text-2xl font-semibold mb-6 text-center">Offres d'Emploi Récentes</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <div class="bg-white shadow-lg rounded-lg overflow-hidden transition-transform transform hover:scale-105 hover:shadow-xl">
                     <div class="p-6">
-                        <h3 class="font-bold text-xl text-blue-600">Développeur Web</h3>
-                        <p class="text-gray-600">Localisation : Paris</p>
-                        <p class="mt-2 text-gray-700">Rejoignez notre équipe dynamique pour développer des applications web innovantes.</p>
+                        <h3 class="font-bold text-xl text-blue-600"><?= $offre['post']?></h3>
+                        <p class="text-gray-600">Localisation : <?= $offre['location']?></p>
+                        <p class="mt-2 text-gray-700"><?= $offre['description']?></p>
                         <button class="mt-4 bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700">Postuler</button>
                     </div>
                 </div>
-                <div class="bg-white shadow-lg rounded-lg overflow-hidden transition-transform transform hover:scale-105 hover:shadow-xl">
-                    <div class="p-6">
-                        <h3 class="font-bold text-xl text-blue-600">Designer UI/UX</h3>
-                        <p class="text-gray-600">Localisation : Lyon</p>
-                        <p class="mt-2 text-gray-700">Nous cherchons un designer créatif pour améliorer l'expérience utilisateur de nos produits.</p>
-                        <button class="mt-4 bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700">Postuler</button>
-                    </div>
-                </div>
-                <div class="bg-white shadow-lg rounded-lg overflow-hidden transition-transform transform hover:scale-105 hover:shadow-xl">
-                    <div class="p-6">
-                        <h3 class="font-bold text-xl text-blue-600">Chef de Projet</h3>
-                        <p class="text-gray-600">Localisation : Marseille</p>
-                        <p class="mt-2 text-gray-700">Nous recherchons un chef de projet expérimenté pour diriger nos initiatives stratégiques.</p>
-                        <button class="mt-4 bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700">Postuler</button>
-                    </div>
-                </div>
+            <?php } ?>
             </div>
+
+            
         </section>
 
         <section class="mt-12">
