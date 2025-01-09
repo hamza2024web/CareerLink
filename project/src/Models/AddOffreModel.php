@@ -34,7 +34,7 @@ class AddOffreModel
             $category_id = $offer->getCat();
             $categoryQuery = "SELECT id FROM categories WHERE id = :id";
             $categoryStmt = $this->conn->prepare($categoryQuery);
-            $categoryStmt->bindParam("id",$category_id);
+            $categoryStmt->bindParam("id", $category_id);
             $categoryStmt->execute();
             $category_offre_id = $categoryStmt->fetch();
             if (!$category_offre_id) {
@@ -89,7 +89,7 @@ class AddOffreModel
     public function getOffers(){
         $categoryQuery = "SELECT id FROM categories WHERE id = :id";
         $categoryStmt = $this->conn->prepare($categoryQuery);
-        $categoryStmt->bindParam("id",$category_id);
+        $categoryStmt->bindParam("id", $category_id);
         $categoryStmt->execute();
         $category_offre_id = $categoryStmt->fetch();
         if (!$category_offre_id) {
@@ -97,11 +97,13 @@ class AddOffreModel
             return null;
         }
         $category_id_offer = $category_offre_id['id'];
-        $query = "SELECT offres.post , offres.description , offres.salary , offres.qualification ,offres.location FROM offres,categories,offres_tags,tags
-        INNER JOIN categories ON :category_id = categories.id
-        INNER JOIN offres_tags ON  offre_id = tags.id";
+        $query = "SELECT offres.post , offres.description , offres.salary ,offres.qualification,offres.location , offres.recruteur_id , offres.category_id FROM offres 
+        INNER JOIN categories ON offres.category_id = categories.id 
+        INNER JOIN recruteurs ON recruteurs.id = offres.recruteur_id
+        INNER JOIN offres_tags ON offres_tags.offre_id = offres.id
+        INNER JOIN tags ON offres_tags.tag_id = tags.id";
         $stmt = $this->conn->prepare($query);
-        $stmt->bindParam(":category_id",$category_id_offer);
+        $stmt->bindParam(":category_id", $category_id_offer);
         $stmt->execute();
         $offreFetch = $stmt->fetchAll(PDO::FETCH_ASSOC);
         return $offreFetch;

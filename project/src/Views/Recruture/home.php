@@ -6,7 +6,6 @@ $email = $_SESSION['email'];
 use App\Controllers\OffreController;
 $offresFetch = new OffreController;
 $offreFetched = $offresFetch->fetchOffre();
-
 ?>
 
 <!DOCTYPE html>
